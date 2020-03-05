@@ -1,4 +1,4 @@
-export interface IAPIResponse {
+export interface APIResponse {
   _links: {
     self: {
       href: string;

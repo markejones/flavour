@@ -1,6 +1,6 @@
-import { IAPIResponse } from '../types';
+import { APIResponse } from "../types";
 
-export interface IAchievementCategory {
+export interface AchievementCategory {
   key: {
     href: string;
   };
@@ -8,6 +8,6 @@ export interface IAchievementCategory {
   id: number;
 }
 
-export interface IAchievementCategoriesIndexResponse extends IAPIResponse {
-  categories: IAchievementCategory[];
+export interface AchievementCategoriesIndexResponse extends APIResponse {
+  categories: AchievementCategory[];
 }

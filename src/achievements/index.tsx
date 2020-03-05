@@ -19,23 +19,17 @@ export const Achievements = (props: AchievementsProps) => {
 
   return (
     <div>
-      {props.token ? (
-        <>
-          <h1>Achievements</h1>
-          <button onClick={loadCategories}>Click me</button>
-          <div>
-            {categories && categories.length > 0 && (
-              <ul>
-                {categories.map(category => (
-                  <li key={category.id}>{category.name}</li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </>
-      ) : (
-        <div>loading...</div>
-      )}
+      <h1>Achievements</h1>
+      <button onClick={loadCategories}>Click me</button>
+      <div>
+        {categories && categories.length > 0 && (
+          <ul>
+            {categories.map(category => (
+              <li key={category.id}>{category.name}</li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
 };

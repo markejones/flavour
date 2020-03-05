@@ -20,9 +20,7 @@ const App = () => {
   }, []);
 
   return (
-    <div>
-      <Achievements token={token} />
-    </div>
+    <div>{token ? <Achievements token={token} /> : <div>loading...</div>}</div>
   );
 };
 

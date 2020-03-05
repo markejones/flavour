@@ -1,15 +1,12 @@
-import * as React from 'react';
-import {
-  IAchievementCategory,
-  getAchievementCategoriesIndex
-} from '../api/achievements';
+import * as React from "react";
+import { AchievementCategory, getAchievementCategoriesIndex } from "../api/achievements";
 
 interface AchievementsProps {
   token: string;
 }
 
 export const Achievements = (props: AchievementsProps) => {
-  const [categories, setCategories] = React.useState<IAchievementCategory[]>();
+  const [categories, setCategories] = React.useState<AchievementCategory[]>();
 
   const loadCategories = () => {
     getAchievementCategoriesIndex(props.token).then(response => {

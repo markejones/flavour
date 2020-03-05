@@ -1,7 +1,7 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
-const dotenv = require('dotenv');
-const webpack = require('webpack');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
+const dotenv = require("dotenv");
+const webpack = require("webpack");
 
 module.exports = () => {
   const env = dotenv.config().parsed;
@@ -15,17 +15,17 @@ module.exports = () => {
       rules: [
         {
           test: /\.(ts|tsx)$/,
-          use: { loader: 'ts-loader' },
+          use: { loader: "ts-loader" },
           exclude: /node_modules/
         }
       ]
     },
     resolve: {
-      extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']
+      extensions: [".ts", ".tsx", ".js", ".jsx", ".json"]
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, 'src', 'index.html')
+        template: path.resolve(__dirname, "src", "index.html")
       }),
       new webpack.DefinePlugin(envKeys)
     ]

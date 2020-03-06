@@ -13,5 +13,10 @@ module.exports = {
   rules: {
     "prettier/prettier": "error",
     "@typescript-eslint/explicit-function-return-type": 0
+  },
+  env: {
+    browser: true,
+    amd: true,
+    node: true
   }
 };

@@ -9,8 +9,15 @@ interface AchievementsProps {
 
 export const Achievements = (props: AchievementsProps) => {
   const [categories, setCategories] = React.useState<AchievementCategory[]>();
-  const query = useQuery();
   const history = useHistory();
+  const query = useQuery();
+  const [selectedCategory, setSelectedCategory] = React.useState<string>((): string => {
+    if (query.get("category")) {
+      return query.get("category");
+    } else {
+      return "";
+    }
+  });
 
   React.useEffect(() => {
     const loadCategoriesIndex = async () => {
@@ -28,8 +35,9 @@ export const Achievements = (props: AchievementsProps) => {
     (event: React.ChangeEvent<HTMLSelectElement>): void => {
       history.push({
         pathname: "/achievements",
-        search: `?categoryId=${event.target.value}`
+        search: `?category=${event.target.value}`
       });
+      setSelectedCategory(event.target.value);
     },
     [event]
   );
@@ -37,7 +45,7 @@ export const Achievements = (props: AchievementsProps) => {
   return (
     <div>
       <h1>Achievements</h1>
-      <select onChange={updateUrl} value={query.get("categoryId")}>
+      <select onChange={updateUrl} value={selectedCategory}>
         {categories &&
           categories.length > 0 &&
           categories

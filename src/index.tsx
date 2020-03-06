@@ -21,7 +21,7 @@ const App = () => {
   return (
     <Router>
       <nav>
-        <Link to="/achievements?categoryId=1">Achievements</Link>
+        <Link to="/achievements">Achievements</Link>
       </nav>
       <Switch>
         <Route path="/achievements">

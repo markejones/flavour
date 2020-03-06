@@ -40,7 +40,9 @@ export const Achievements = (props: AchievementsProps) => {
       <select onChange={updateUrl} value={query.get("categoryId")}>
         {categories &&
           categories.length > 0 &&
-          categories.map(category => <option key={category.id}>{category.name}</option>)}
+          categories
+            .sort((a, b) => (a.name > b.name ? 1 : -1))
+            .map(category => <option key={category.id}>{category.name}</option>)}
       </select>
     </div>
   );

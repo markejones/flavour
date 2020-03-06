@@ -15,7 +15,9 @@ export const Achievements = (props: AchievementsProps) => {
       setCategories(response.categories);
     };
 
-    loadCategoriesIndex();
+    if (props.token) {
+      loadCategoriesIndex();
+    }
   }, [props.token]);
 
   return (

@@ -8,8 +8,4 @@ describe("<Button />", () => {
     const { getByRole } = render(<Button onClick={() => null} />);
     expect(getByRole("button")).toBeEnabled();
   });
-
-  test("fail tests intentionally", () => {
-    expect(false).toBe(true);
-  });
 });

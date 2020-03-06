@@ -8,25 +8,24 @@ interface AchievementsProps {
 export const Achievements = (props: AchievementsProps) => {
   const [categories, setCategories] = React.useState<AchievementCategory[]>();
 
-  const loadCategories = () => {
-    getAchievementCategoriesIndex(props.token).then(response => {
+  React.useEffect(() => {
+    const loadCategoriesIndex = async () => {
+      const response = await getAchievementCategoriesIndex(props.token);
+
       setCategories(response.categories);
-    });
-  };
+    };
+
+    loadCategoriesIndex();
+  }, [props.token]);
 
   return (
     <div>
       <h1>Achievements</h1>
-      <button onClick={loadCategories}>Click me</button>
-      <div>
-        {categories && categories.length > 0 && (
-          <ul>
-            {categories.map(category => (
-              <li key={category.id}>{category.name}</li>
-            ))}
-          </ul>
-        )}
-      </div>
+      <select>
+        {categories &&
+          categories.length > 0 &&
+          categories.map(category => <option key={category.id}>{category.name}</option>)}
+      </select>
     </div>
   );
 };

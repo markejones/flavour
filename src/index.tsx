@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Link, Switch, Route } from "react-router-dom";
 
 import { getToken } from "./api/auth/service";
 import { Achievements } from "./achievements";
@@ -21,7 +21,7 @@ const App = () => {
   return (
     <Router>
       <nav>
-        <Link to="/achievements">Achievements</Link>
+        <Link to="/achievements?categoryId=1">Achievements</Link>
       </nav>
       <Switch>
         <Route path="/achievements">

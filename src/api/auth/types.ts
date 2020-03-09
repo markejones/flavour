@@ -1,3 +1,3 @@
-export interface IAPIAuthenticationResponse {
+export interface APIAuthenticationResponse {
   access_token: string;
 }

@@ -1,9 +1,11 @@
 import { createStore, combineReducers, applyMiddleware, Action } from "redux";
 import thunk, { ThunkAction } from "redux-thunk";
 import { authReducer } from "./auth/reducers";
+import { achievementsReducer } from "./achievements/reducers";
 
 export const rootReducer = combineReducers({
-  auth: authReducer
+  auth: authReducer,
+  achievements: achievementsReducer
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

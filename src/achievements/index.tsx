@@ -1,16 +1,22 @@
 import * as React from "react";
-import { AchievementCategory, getAchievementCategoriesIndex } from "../api/achievements";
 import { useQuery } from "../hooks";
 import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../store";
+import { getToken } from "../store/auth/actions";
+import { getAchievementCategories } from "../store/achievements/actions";
 
-interface AchievementsProps {
-  token: string;
-}
-
-export const Achievements = (props: AchievementsProps) => {
-  const [categories, setCategories] = React.useState<AchievementCategory[]>();
+export const Achievements = () => {
   const history = useHistory();
   const query = useQuery();
+  const dispatch = useDispatch();
+  const token = useSelector((state: RootState) => state.auth.token);
+  const categories = useSelector((state: RootState) => state.achievements.categories);
+
+  React.useEffect(() => {
+    dispatch(getToken({ clientId: process.env.CLIENT_ID, clientSecret: process.env.CLIENT_SECRET }));
+  }, []);
+
   const [selectedCategory, setSelectedCategory] = React.useState<string>((): string => {
     if (query.get("category")) {
       return query.get("category");
@@ -20,16 +26,10 @@ export const Achievements = (props: AchievementsProps) => {
   });
 
   React.useEffect(() => {
-    const loadCategoriesIndex = async () => {
-      const response = await getAchievementCategoriesIndex(props.token);
-
-      setCategories(response.categories);
-    };
-
-    if (props.token) {
-      loadCategoriesIndex();
+    if (token) {
+      dispatch(getAchievementCategories(token));
     }
-  }, [props.token]);
+  }, [token]);
 
   const updateUrl = React.useCallback(
     (event: React.ChangeEvent<HTMLSelectElement>): void => {

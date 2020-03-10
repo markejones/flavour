@@ -15,8 +15,8 @@ export const achievementsReducer = (state = initialState, action: AchievementAct
   switch (action.type) {
     case GET_ACHIEVEMENT_CATEGORIES_REQUEST:
       return {
-        error: null,
-        ...state
+        ...state,
+        error: null
       };
 
     case GET_ACHIEVEMENT_CATEGORIES_RESPONSE:
@@ -27,8 +27,8 @@ export const achievementsReducer = (state = initialState, action: AchievementAct
 
     case GET_ACHIEVEMENT_CATEGORIES_ERROR:
       return {
-        error: action.payload,
-        ...state
+        ...state,
+        error: action.payload
       };
 
     default:

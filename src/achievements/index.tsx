@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../store";
 import { getToken } from "../store/auth/actions";
 import { getAchievementCategories } from "../store/achievements/actions";
-import { Button } from "../shared/button";
 
 export const Achievements = () => {
   const history = useHistory();
@@ -53,7 +52,6 @@ export const Achievements = () => {
             .sort((a, b) => (a.name > b.name ? 1 : -1))
             .map(category => <option key={category.id}>{category.name}</option>)}
       </select>
-      <Button onClick={() => console.log("clicked")} />
     </div>
   );
 };

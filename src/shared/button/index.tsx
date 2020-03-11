@@ -1,5 +1,7 @@
 import * as React from "react";
 
+import "./index.scss";
+
 interface ButtonProps {
   onClick: React.MouseEventHandler;
   disabled?: boolean;

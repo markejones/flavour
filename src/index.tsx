@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 
 import { Achievements } from "./achievements";
 import { store } from "./store";
+import { Button } from "./shared/button";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         </nav>
         <Switch>
           <Route path="/achievements">
+            <Button onClick={() => console.log("hello from button")} />
             <Achievements />
           </Route>
         </Switch>
